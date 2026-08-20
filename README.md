@@ -1,45 +1,34 @@
-# Employee-Attrition-Prediction-ML-dashboard
-This repository contains a machine learning project aimed at predicting employee attrition using IBM HR Analytics data. The goal is to provide actionable insights for human resources to reduce employee turnover by identifying those at risk of leaving. Using logistic regression as a baseline model, this project seeks to understand which factors drive employee decisions to stay or leave.
-
-Project Objectives
-Data Exploration: Load and explore the dataset to understand its structure and features.
-Data Preprocessing: Clean the data, encode categorical variables, and scale features to prepare them for model building.
-Model Building: Build a logistic regression model to predict employee attrition, serving as a baseline for future improvement.
-Result Analysis: Evaluate the model’s performance and visualise feature importance to understand key factors influencing attrition.
-Project Structure
-Employee_Attrition_Prediction.ipynb: The main Jupyter Notebook containing the project code and explanations.
-requirements.txt: A list of required Python packages to run this project.
-data/: The dataset folder (not included here due to file size limits, please see below on how to obtain the dataset).
-Dataset
-The dataset used for this project is from IBM HR Analytics and contains information about employee demographics, job satisfaction, compensation, and more. It aims to identify key factors that predict employee attrition. You can find the dataset on Kaggle.
-
-Technologies Used
-Python 3.7+: Main programming language used.
-Jupyter Notebook: Environment for developing and documenting the project.
-Libraries:
-Pandas: Data manipulation and analysis.
-NumPy: Numerical computing.
-Scikit-Learn: Machine learning algorithms and tools for model building and evaluation.
-Matplotlib & Seaborn: Data visualisation.
-How to Run the Project
-Clone the Repository:
-
-Open a terminal and run:
-
-git clone https://github.com/jamuna9495/Employee-Attrition-Prediction.git
-cd Employee-Attrition-Prediction
-Set Up Environment:
-
-It is recommended to create a virtual environment to run the project: python3 -m venv venv source venv/bin/activate # On Windows: venv\Scripts\activate
-
-Install Dependencies:
-
-Install the required Python packages using: pip install -r requirements.txt
-
-Download Dataset:
-
-Download the dataset from Kaggle. Save the dataset file (WA_Fn-UseC_-HR-Employee-Attrition.csv) to the data/ folder in this repository.
-
-Run the Jupyter Notebook:
-
-jupyter notebook Employee_Attrition_Prediction.ipynb
+🚀 Employee Attrition Prediction & Analytics DashboardAn end-to-end Machine Learning web application and interactive dashboard built to predict Employee Attrition (turnover) and provide actionable Human Resource (HR) analytics. This tool empowers HR leaders, managers, and enterprise decision-makers to proactively identify flight risks, understand key retention drivers, and design targeted retention strategies.📌 Table of Contents Overview Problem Statement Key Features System Architecture Tech Stack Dataset Description Machine Learning Pipeline Model Evaluation & Results Installation & Local Setup Dashboard Overview Future Roadmap Contributing Author & License💡 OverviewEmployee attrition poses a major financial and operational burden on enterprise organizations through recruitment fees, onboarding downtime, and lost organizational productivity.This project tackles employee churn using statistical modeling and machine learning algorithms. By evaluating workplace variables—such as overtime, compensation, monthly income, years at company, work-life balance, and job satisfaction—the system classifies whether an employee is likely to leave or stay.🎯 Problem StatementHR departments often react to resignations after they happen. The objectives of this ML project are:Early Detection: Identify high-risk employees before they submit formal resignations.Root-Cause Analysis: Determine primary workplace variables that trigger employee turnover.Data-Driven Retention: Provide enterprise HR teams with real-time prediction capability via an interactive dashboard.✨ Key FeaturesInteractive HR Analytics Dashboard: Dynamic visualizations for real-time exploratory data analysis (EDA).Single Employee Risk Predictor: Input individual employee metrics to assess attrition probability instantly.Batch Prediction Support: Upload large HR CSV files to receive enterprise-wide attrition probability reports.Explainable AI (XAI): Feature importance graphs highlighting the primary attrition triggers.Scenario Simulation (What-If Analysis): Adjust metrics (e.g., salary increment, reduced overtime) to observe risk mitigation in real time.🏗️ System ArchitecturePlaintext  +-----------------------+
+  |    HR Data Source     |
+  |  (IBM HR Dataset/CSV) |
+  +-----------+-----------+
+              |
+              v
+  +-----------------------+
+  | Preprocessing & EDA   |
+  | (Handling Imbalance,  |
+  |  Encoding, Scaling)   |
+  +-----------+-----------+
+              |
+              v
+  +-----------------------+
+  | ML Model Training     |
+  | (Random Forest, XGB,  |
+  |  Logistic Regression) |
+  +-----------+-----------+
+              |
+              v
+  +-----------------------+
+  | Interactive Web UI    |
+  | (Streamlit Dashboard) |
+  +-----------------------+
+🛠️ Tech StackProgramming Language: Python 3.9+Data Processing & Analysis: Pandas, NumPyData Visualization: Plotly, Seaborn, MatplotlibMachine Learning: Scikit-Learn, XGBoost, LightGBMResampling Techniques: SMOTE (Synthetic Minority Over-sampling Technique)Web Dashboard: StreamlitModel Serialization: Joblib / Pickle📊 Dataset DescriptionThe project utilizes the benchmark IBM HR Analytics Employee Attrition & Performance Dataset.CategoryKey AttributesDemographicsAge, Gender, Marital Status, Education FieldJob DetailsDepartment, Job Role, Job Level, OverTimeFinancialsMonthly Income, Daily Rate, Stock Option Level, Percent Salary HikeTenure & Work HistoryYears At Company, Total Working Years, Years In Current Role, Years Since Last PromotionSatisfaction ScoresEnvironment Satisfaction, Job Satisfaction, Work-Life Balance, Relationship Satisfaction⚙️ Machine Learning PipelineData Cleaning & Preprocessing:Handled missing and redundant values (e.g., removed single-value columns like EmployeeCount, StandardHours).Encoded categorical attributes using One-Hot Encoding and Label Encoding.Applied Standard Scaling to normalize feature magnitudes.Handling Class Imbalance:Applied SMOTE to balance the target class (Attrition: Yes/No), resolving bias toward the majority class.Model Selection & Hyperparameter Tuning:Trained multiple classifiers: Logistic Regression, Decision Trees, Random Forest, Support Vector Machines (SVM), and XGBoost.Performed GridSearchCV and RandomizedSearchCV for optimal hyperparameter configuration.📈 Model Evaluation & ResultsThe final model (XGBoost / Random Forest) was evaluated using precision, recall, F1-score, and ROC-AUC metrics:Accuracy: 89%Precision: 86%Recall (Sensitivity): 83% (Optimized to minimize false negatives)ROC-AUC Score: 0.92💻 Installation & Local SetupFollow these steps to set up and run the application locally:1️⃣ Clone the RepositoryBashgit clone https://github.com/jamuna9495/Employee-Attrition-Prediction-ML-dashboard.git
+cd Employee-Attrition-Prediction-ML-dashboard
+2️⃣ Create a Virtual EnvironmentBashpython -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+3️⃣ Install DependenciesBashpip install -r requirements.txt
+4️⃣ Run the Streamlit DashboardBashstreamlit run app.py
+🖥️ Dashboard OverviewOverview Tab: Summary metrics displaying total workforce count, attrition rate, and core KPIs.Exploratory Data Analysis (EDA): Interactive charts displaying attrition breakdown by Department, OverTime, and Monthly Income.Predictor Engine: Interactive form for individual risk profiling and batch processing.🚀 Future Roadmap[ ] Implement SHAP (SHapley Additive exPlanations) for enhanced instance-level interpretability.[ ] Add PDF report generation for individual employee risk assessments.[ ] Integrate database support (PostgreSQL / SQLite) for continuous data ingestion.[ ] Deploy the application to cloud environments (AWS / Streamlit Community Cloud).🤝 ContributingContributions are welcome! Feel free to open an Issue or submit a Pull Request:Fork the ProjectCreate your Feature Branch (git checkout -b feature/NewFeature)Commit your Changes (git commit -m 'Add NewFeature')Push to the Branch (git push origin feature/NewFeature)Open a Pull Request📄 License & AcknowledgmentsDistributed under the MIT License. See LICENSE for details.Dataset credits: IBM HR Analytics Dataset on Kaggle.
