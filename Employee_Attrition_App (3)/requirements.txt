@@ -1,0 +1,10 @@
+streamlit>=1.32
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+plotly>=5.18
+joblib>=1.3
+
+# Optional — enables exact SHAP-based explainability on the Predict page.
+# App works fine without it (falls back to a heuristic driver ranking).
+shap>=0.44
